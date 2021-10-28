@@ -47,7 +47,24 @@ $(document).ready(function() {
                         $(this).addClass("future");
                     }
                 })
-        
+        //refresh the time check every few mintue to keep colors current if app is left open
+                setInterval(() => {
+                    $(".time-block").each(function() {
+                        var currentHour = moment().format("k");
+                        var hourBlock = parseInt($(this).attr("id"));
+                        
+                            if(currentHour > hourBlock){
+                                $(this).addClass("past");
+                            }
+                                else if(currentHour == hourBlock){
+                                    $(this).addClass("present");
+                                }
+                                    else{
+                                        $(this).addClass("future");
+                                    }
+                                })
+                            
+                }, 30000);
     
 
 
