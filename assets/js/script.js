@@ -1,5 +1,4 @@
-var todaysDate = moment().format("dddd MMM Do h:m A");
-var tasks = {};
+var todaysDate = moment().format("dddd MMM Do h:mm A");
 var saveBtn =$(".saveBtn");
 
 //display todays date in header
@@ -25,15 +24,29 @@ $(document).ready(function() {
         var savedHourBlock = $(this).text();
         var savedPlanTask = localStorage.getItem(savedHourBlock);
 
-        // console.log(savedHourBlock);
-        // console.log(savedPlanTask);
-
         if(savedPlanTask !== null) {
             $(this).siblings(".planTask").val(savedPlanTask);
             
         }
     });
 });
+
+//check time block against current time and update CSS for time block
+
+    $(".time-block").each(function() {
+        var currentHour = moment().format("k");
+        var hourBlock = parseInt($(this).attr("id"));
+        
+            if(currentHour > hourBlock){
+                $(this).addClass("past");
+            }
+                else if(currentHour == hourBlock){
+                    $(this).addClass("present");
+                }
+                    else{
+                        $(this).addClass("future");
+                    }
+        })
 
 
 
