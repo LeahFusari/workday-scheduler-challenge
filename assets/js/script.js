@@ -36,7 +36,7 @@ $(document).ready(function() {
     $(".time-block").each(function() {
         var currentHour = moment().format("k");
         var hourBlock = parseInt($(this).attr("id"));
-        console.log(currentHour);
+        
             if(currentHour > hourBlock){
                 $(this).addClass("past");
             }
@@ -46,8 +46,9 @@ $(document).ready(function() {
                     else{
                         $(this).addClass("future");
                     }
-        })
-
+                })
+        
+    
 
 
 
